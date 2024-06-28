@@ -244,28 +244,6 @@ ul {
     box-sizing: border-box;
 }
 
-/*
-.work-static {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.work-gif {
-    display: none;
-    width: 100%;
-    height: auto;
-}
-
-.grid-item:hover .work-static {
-    display: none;
-}
-
-.grid-item:hover .work-gif {
-    display: block;
-}
-*/
-
 .card h3 {
     text-align: center; /* Center the text */
     margin: 10px 0 0 0; /* Adjust margins to fit within the card */
@@ -273,6 +251,7 @@ ul {
 
 .fragrantmemory, .sansalc, .ddalpodo, .findyourmuse, .ballroom, .tteokbokki, .boki, .showreel-section {
     padding: 50px 300px;
+    margin-top: 100px;
 }
 
 .video-section {
