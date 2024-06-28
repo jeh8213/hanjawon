@@ -97,6 +97,7 @@ ul {
 }
 
 .about-button, .work-button {
+    color: #333333;
     text-decoration: none;
     text-align: center;
     display: block;
