@@ -144,6 +144,7 @@ ul {
 
 .nav-bar {
     background-color: #EAF0E6;
+    text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -176,6 +177,7 @@ ul {
 
 .btn1:hover, .btn2:hover, .btn3:hover  {
     color: #7EA37D;
+    text-decoration: none;
     box-shadow: 2px 2px 0 0 #333333;
     transform: translate(-2px, -2px);
 }
@@ -188,9 +190,11 @@ ul {
 
 .cardbtn:hover h3{
     color: #7EA37D;
+    text-decoration: none;
 }
 
 .cardbtn {
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
