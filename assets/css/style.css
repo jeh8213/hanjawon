@@ -41,6 +41,7 @@ h1 {
 h2 {
     font-family: 'Outfit', sans-serif;
     color: #333333;
+    font-size: 28px;
 }
 
 p {
@@ -264,11 +265,25 @@ ul {
     justify-content: left;
 }
 
+.meta-info {
+    margin: 16px 0 30px;
+}
+
 /* Process section images — center across all project pages */
 .fm-process img,
 .bk-process img,
-.sol-process img {
+.sol-process img,
+.dp-process > img {
     margin: 10px auto;
+}
+
+/* Character sketch rows */
+.ddalgi, .podo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 10px 0;
 }
 
 /* Scene captions (quotes) below each gif — only targets <i> that is the sole child of its <p> */
@@ -548,12 +563,12 @@ img {
     height: auto !important;
 }
 
-/* Responsive iframes (16:9) */
+/* Responsive iframes (16:9) — fills full content width */
 .video-section {
     position: relative;
     width: 100%;
-    max-width: 560px;
     aspect-ratio: 16 / 9;
+    margin-bottom: 30px;
 }
 
 .video-section iframe {
