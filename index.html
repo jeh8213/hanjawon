@@ -1,26 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" dir="itr">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://api.fontshare.com/v2/css?f[]=switzer@300,500&f[]=outfit@600&display=swap" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/6adddd4153.js" crossorigin="anonymous"></script>
     <title>Jawon (Jellie) Han</title>
-    <script src="script.js" defer></script>
+    <script src="assets/js/script.js" defer></script>
 </head>
 <body>
 <div class="header">
     <div class="main-navbar">
     <div class="logobutton">
-        <a href="index.html"><img src="logo top left.png" alt="logo button" style="width:60px;"></a>
+        <a href="index.html"><img src="assets/images/logo top left.webp" alt="logo button" style="width:60px;"></a>
     </div>
     <div class="topnav">
-        <button class="about-button"><a href="about.html">About</a></button>
-        <button class="work-button" onclick="scrollToSection('work-section')">Work</button>
+        <a href="about.html" class="about-button">About</a>
+        <a href="#work-section" class="work-button">Work</a>
     </div>
     </div>
     <div class="topContainer">
-        <img src="jellielogo.gif" alt="logo" style="width:480px;height:270px;">
+        <img src="assets/images/jellielogo.gif" alt="logo" style="width:480px;height:270px;">
         <div id="subHeader">
             <h2><i>Jellie</i> is a <i>motion graphics designer.</i></h2>
         </div>
@@ -33,32 +34,32 @@
         <div class="videoGrid" id="all">
             <div class="grid-item">
                 <button class="cardbtn">
-                    <a href="ShowReel.html"><img src="ShowReel_1.gif" alt="ShowReel" class="work-gif" style="width:480px;height:270px;"></a>
+                    <a href="ShowReel.html"><img src="assets/images/ShowReel_1.gif" alt="ShowReel" class="work-gif" style="width:480px;height:270px;"></a>
                     <h3>ShowReel 2024</h3>
                 </button>
             </div>
             <div class="grid-item">
                 <button class="cardbtn">
-                    <a href="fragrantmemory.html"><img src="fragrantmemory.jpg" alt="Fragrant Memory" class="work-gif" style="width:480px;height:270px;"></a>
+                    <a href="fragrantmemory.html"><img src="assets/images/fragrantmemory.webp" alt="Fragrant Memory" class="work-gif" style="width:480px;height:270px;"></a>
                     <h3>Fragrant Memory (Senior Project)</h3>
             </button>
             </div>
             <div class="grid-item">
                 <button class="cardbtn">
-                    <a href="boki.html"><img src="boki.gif" alt="Boki Brand Application" class="work-gif" style="width:480px;height:270px;"></a>
+                    <a href="boki.html"><img src="assets/images/boki/boki.gif" alt="Boki Brand Application" class="work-gif" style="width:480px;height:270px;"></a>
                     <h3>Boki Brand Application</h3>
             </button>
             </div>
             <div class="grid-item">
                 <button class="cardbtn">
-                    <a href="syntaxoflove.html"><img src="syntaxoflove.gif" alt="Tteokbokki Recipe Explainer" class="work-gif" style="width:480px;height:270px;"></a>
+                    <a href="syntaxoflove.html"><img src="assets/images/syntaxoflove/syntaxoflove.gif" alt="The Syntax of Love" class="work-gif" style="width:480px;height:270px;"></a>
                     <h3>The Syntax of Love</h3>
                 </button>
             </div>
             
             <div class="grid-item">
                 <button class="cardbtn">
-                    <a href="DDALPODO.html"><img src="ddalpodo.gif" alt="DDALPODO 3D Animation" class="work-gif" style="width:480px;height:270px;"></a>
+                    <a href="DDALPODO.html"><img src="assets/images/ddalpodo/ddalpodo.gif" alt="DDALPODO 3D Animation" class="work-gif" style="width:480px;height:270px;"></a>
                     <h3>DDALPODO Commercial (3D Animation)</h3>
             </button>
             </div>
@@ -67,32 +68,26 @@
         <div class="videoGrid" id="motion">
             <div class="grid-item">
                 <button class="cardbtn">
-                    <a href="ShowReel.html"><img src="ShowReel_1.gif" alt="ShowReel" class="work-gif" style="width:480px;height:270px;"></a>
+                    <a href="ShowReel.html"><img src="assets/images/ShowReel_1.gif" alt="ShowReel" class="work-gif" style="width:480px;height:270px;"></a>
                     <h3>ShowReel 2024</h3>
                 </button>
             </div>
             <div class="grid-item">
                 <button class="cardbtn">
-                    <a href="fragrantmemory.html"><img src="fragrantmemory.jpg" alt="Fragrant Memory" class="work-gif" style="width:480px;height:270px;"></a>
+                    <a href="fragrantmemory.html"><img src="assets/images/fragrantmemory.webp" alt="Fragrant Memory" class="work-gif" style="width:480px;height:270px;"></a>
                     <h3>Fragrant Memory (Senior Project)</h3>
             </button>
             </div>
             <div class="grid-item">
                 <button class="cardbtn">
-                    <a href="boki.html"><img src="boki.gif" alt="Boki Brand Application" class="work-gif" style="width:480px;height:270px;"></a>
+                    <a href="boki.html"><img src="assets/images/boki/boki.gif" alt="Boki Brand Application" class="work-gif" style="width:480px;height:270px;"></a>
                     <h3>Boki Brand Application</h3>
             </button>
             </div>
             <div class="grid-item">
                 <button class="cardbtn">
-                    <a href="DDALPODO.html"><img src="ddalpodo.gif" alt="DDALPODO 3D Animation" class="work-gif" style="width:480px;height:270px;"></a>
+                    <a href="DDALPODO.html"><img src="assets/images/ddalpodo/ddalpodo.gif" alt="DDALPODO 3D Animation" class="work-gif" style="width:480px;height:270px;"></a>
                     <h3>DDALPODO Commercial (3D Animation)</h3>
-            </button>
-            </div>
-            <div class="grid-item">
-                <button class="cardbtn">
-                    <a href="findyourmuse.html"><img src="character.gif" alt="Find Your Muse" class="work-gif" style="width:480px;height:270px;"></a>
-                    <h3>Find Your Muse (Character Animation)</h3>
             </button>
             </div>
         </div>   
@@ -102,9 +97,9 @@
     <div class="footer">
         <h3>let's chat!</h3>
         <div class="icons">
-            <a href="https://www.linkedin.com/in/jawon-han/"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/jelliemotion/"><i class="fa-brands fa-instagram"></i></a>
-            <a href="mailto:jelliehan@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/jawon-han/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/jelliemotion/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="mailto:jelliehan@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
         </div>
     </div>
 </div>
