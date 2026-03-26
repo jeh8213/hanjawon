@@ -1,25 +1,155 @@
+/* =============================================================================
+   CSS CUSTOM PROPERTIES
+   Change these to restyle the whole site at once.
+   ============================================================================= */
+:root {
+    --color-bg:      #EAF0E6;  /* page background (sage green) */
+    --color-text:    #333333;  /* primary text / borders */
+    --color-accent:  #7EA37D;  /* hover highlight (muted green) */
+
+    --border:        3px solid var(--color-text);
+    --radius-sm:     25px;
+    --radius-lg:     40px;
+
+    --nav-height:    80px;  /* approximate fixed-nav height; used for body offset */
+}
+
+
+/* =============================================================================
+   GLOBAL RESETS
+   ============================================================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
-    background-color: #EAF0E6;
+    background-color: var(--color-bg);
     scroll-behavior: smooth;
 }
 
-.header {
-    border-bottom: 2px solid #333333;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-a {
-    color: inherit; 
-    text-decoration: none; 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* =============================================================================
+   TYPOGRAPHY
+   ============================================================================= */
+h1 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--color-text);
+    font-size: 48px;
+}
+
+h2 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--color-text);
+    font-size: 28px;
+}
+
+p {
+    font-family: 'Switzer', sans-serif;
+    color: var(--color-text);
+}
+
+ul {
+    font-family: 'Switzer', sans-serif;
+    color: var(--color-text);
+}
+
+/* Centered process section sub-labels (e.g. "Mood Board", "Ideation") */
+.process-subheader {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    color: var(--color-text);
+    text-align: center;
+    margin: 30px 0 10px;
+}
+
+
+/* =============================================================================
+   NAVIGATION
+   ============================================================================= */
+.main-navbar {
+    overflow: hidden;
+    padding: 0 30px 0 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--color-bg);
+    border-bottom: var(--border);
+}
+
+.topnav {
+    overflow: hidden;
+    padding: 30px 30px 0 0;
+}
+
+/* Nav <a> elements float right inside .topnav */
+.topnav a {
+    display: block;
+    color: var(--color-text);
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+}
+
+.logobutton {
+    display: inline;
+    float: left;
+    background-color: var(--color-bg);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 35px 20px 20px 50px;
+    transition: transform 0.5s ease;
+}
+
+.logobutton:hover {
+    transform: rotate(-10deg);
+}
+
+/* About / Work pill buttons in the nav */
+.about-button, .work-button {
+    color: var(--color-text);
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    float: right;
+    background-color: var(--color-bg);
+    padding: 14px 20px;
+    border: var(--border);
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: var(--radius-sm);
+    margin: 0 10px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.about-button:hover, .work-button:hover {
+    color: var(--color-accent);
+    box-shadow: 2px 2px 0 0 var(--color-text);
+    transform: translate(-2px, -2px);
+}
+
+
+/* =============================================================================
+   HOME PAGE — HERO
+   ============================================================================= */
+.header {
+    border-bottom: var(--border);
 }
 
 .topContainer {
     text-align: center;
     margin-top: 140px;
-
-}
-
-.topContainer h1 {
-    font-size: 90px;
 }
 
 .topContainer img {
@@ -32,177 +162,63 @@ a {
     font-size: 33px;
 }
 
-h1 {
-    font-family: 'Outfit', sans-serif;
-    color: #333333;
-    font-size: 48px
-}
-
-h2 {
-    font-family: 'Outfit', sans-serif;
-    color: #333333;
-    font-size: 28px;
-}
-
-p {
-    font-family: 'Switzer', sans-serif;
-    color: #333333;
-}
-
-ul {
-    font-family: 'Switzer', sans-serif;
-    color: #333333;
-}
-
 #subHeader {
     text-align: center;
     padding-bottom: 100px;
     padding-top: 50px;
 }
 
-.main-navbar {
-    overflow: hidden;
-    padding: 0px 30px 0px 0px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000; /* Ensure the nav bar is above other content */
-    background-color: #EAF0E6; /* Add a background color to ensure it is visible */
-    border-bottom: 2px solid #333333;
+
+/* =============================================================================
+   HOME PAGE — WORK GRID
+   ============================================================================= */
+
+/* Grid is hidden by default; JS adds .active to show the selected filter */
+.videoGrid {
+    display: none;
 }
 
-.topnav {
-    overflow: hidden;
-    padding: 30px 30px 0px 0px;
-}
-
-.topnav a {
-    display: block;
-    color: #333333;
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Outfit', sans-serif;
-}
-
-.logobutton {
-    display: inline;
-    float: left;
-    background-color: #EAF0E6;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 35px 20px 20px 50px;
-    transition: transform 0.5s ease;
-}
-
-.logobutton:hover {
-    transform: rotate(-10deg);
-}
-
-.about-button, .work-button {
-    color: #333333;
-    text-decoration: none;
-    text-align: center;
-    display: block;
-    float: right;
-    background-color: #EAF0E6;
-    padding: 14px 20px;
-    border: 3px solid #333333;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 25px;
-    margin: 0 10px;
-    font-family: 'Outfit', sans-serif;
-}
-
-.about-button:hover, .work-button:hover {
-    color: #7EA37D;
-    box-shadow: 2px 2px 0 0 #333333;
-    transform: translate(-2px, -2px);
-}
-
-.about-button:hover a {
-    color: #7EA37D;
-}
-
-.work-button:hover a {
-    color: #7EA37D;
-}
-
-.showreel {
-    text-align: center;
-    margin: 25px 0;
-}
-
-.showreel img {
-    display: block;
-    margin: 0 auto;
-}
-
-.showreel h3 {
-    margin: 10px 0 0;
-    font-family: 'Outfit', sans-serif;
-    color: #333333;
-}
-
-.nav-bar {
-    background-color: #EAF0E6;
-    text-decoration: none;
-    display: flex;
+.videoGrid.active {
+    display: grid;
+    grid-template-columns: 480px 480px;
+    grid-template-rows: auto;
     justify-content: center;
-    align-items: center;
+    gap: 100px;
+    background-color: var(--color-bg);
     padding: 50px;
-    font-family: 'Outfit', sans-serif;
-    color: #333333;
 }
 
-.nav-bar a {
-    display: block;
-    text-decoration: none;
+.videoGrid h3 {
+    margin: 10px 0 0;
+    font-size: 20px;
+    font-family: 'Outfit', sans-serif;
+    color: var(--color-text);
+}
+
+.videoGrid > div {
     text-align: center;
-    font-family: 'Outfit', sans-serif;
+    font-size: 30px;
 }
 
-
-.btn1, .btn2, .btn3 {
-    display: block;
-    text-decoration: none;
-    text-align: center;
-    font-family: 'Outfit', sans-serif;
-    background-color: #EAF0E6;
-    padding: 14px 20px;
-    border: 3px solid #333333;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 25px;
-    margin: 0 10px;
+/* Thumbnail GIF/image inside each card */
+.work-gif {
+    width: 100% !important;
+    height: auto !important;
+    border-bottom: var(--border);
+    border-radius: 30px;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.btn1:hover, .btn2:hover, .btn3:hover  {
-    color: #7EA37D;
-    text-decoration: none;
-    box-shadow: 2px 2px 0 0 #333333;
-    transform: translate(-2px, -2px);
-}
-
-.cardbtn:hover {
-    color: #7EA37D;
-    box-shadow: 4px 4px 0 0 #333333;
-    transform: translate(-4px, -4px);
-}
-
-.cardbtn:hover h3{
-    color: #7EA37D;
-    text-decoration: none;
-}
-
+/* Card button wrapping each grid item */
 .cardbtn {
     text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 3px solid #333333;
-    border-radius: 40px;
-    background-color: #EAF0E6;
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg);
     overflow: hidden;
     padding: 0 0 20px 0;
     box-sizing: border-box;
@@ -210,66 +226,48 @@ ul {
     top: -20px;
 }
 
-
-.videoGrid {
-    display: none;
-    grid-template-columns: 480px 480px;
-    grid-template-rows: 270px 270px 270px 270px;
-    justify-content: center;
-    gap: 100px;
-    background-color: #EAF0E6;
-
+.cardbtn:hover {
+    color: var(--color-accent);
+    box-shadow: 4px 4px 0 0 var(--color-text);
+    transform: translate(-4px, -4px);
 }
 
-.videoGrid.active {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 480px 480px;
-    grid-template-rows: 270px 270px 270px 270px;
-    gap: 100px;
-    background-color: #EAF0E6;
-    padding: 50px;
-
+.cardbtn:hover h3 {
+    color: var(--color-accent);
 }
 
-.videoGrid h3 {
-    margin: 10px 0 0;
-    font-size: 20px;
-    font-family: 'Outfit', sans-serif;
-    color: #333333;
-}
-.videoGrid > div {
-    text-align: center;
-    font-size: 30px;
-  }
 
-.work-gif  {
-    width: 100%;
-    border-bottom: 3px solid #333333; 
-    border-radius: 30px;
-    margin: 0;
-    box-sizing: border-box;
-}
+/* =============================================================================
+   PROJECT PAGES — SHARED LAYOUT
+   ============================================================================= */
 
-.card h3 {
-    text-align: center; /* Center the text */
-    margin: 10px 0 0 0; /* Adjust margins to fit within the card */
-}
-
-.fragrantmemory, .sansalc, .ddalpodo, .findyourmuse, .ballroom, .tteokbokki, .boki, .showreel-section, .thesyntaxoflove {
+/* Outer padding for all project page wrappers */
+.fragrantmemory, .ddalpodo, .boki, .showreel-section, .thesyntaxoflove {
     padding: 50px 300px;
     margin-top: 100px;
 }
 
+/* Full-width responsive video embed (16:9) */
 .video-section {
-    justify-content: left;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 30px;
 }
 
+.video-section iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Date / Skills block that appears below the video */
 .meta-info {
     margin: 16px 0 30px;
 }
 
-/* Process section images — center across all project pages */
+/* Center process images within each project page */
 .fm-process img,
 .bk-process img,
 .sol-process img,
@@ -277,7 +275,13 @@ ul {
     margin: 10px auto;
 }
 
-/* Character sketch rows */
+/* Scene captions — only the <i> that is the sole child of its <p> */
+.bk-process p > i:only-child {
+    display: block;
+    text-align: center;
+}
+
+/* DDALPODO character sketch rows (Strawberry / Grape) */
 .ddalgi, .podo {
     display: flex;
     flex-wrap: wrap;
@@ -286,22 +290,7 @@ ul {
     margin: 10px 0;
 }
 
-/* Scene captions (quotes) below each gif — only targets <i> that is the sole child of its <p> */
-.bk-process p > i:only-child {
-    display: block;
-    text-align: center;
-}
-
-/* Shared process subheader style */
-.process-subheader {
-    font-family: 'Outfit', sans-serif;
-    font-size: 22px;
-    color: #333333;
-    text-align: center;
-    margin: 30px 0 10px;
-}
-
-/* Arduino photo + iframe side by side */
+/* Arduino photo + installation video side by side */
 .arduino-install {
     display: flex;
     flex-direction: row;
@@ -333,27 +322,10 @@ ul {
     height: 100%;
 }
 
-@media (max-width: 768px) {
-    .arduino-install {
-        flex-direction: column;
-    }
 
-    .arduino-install img {
-        width: 100%;
-    }
-
-    .arduino-install .arduino-video {
-        width: 100%;
-    }
-}
-
-
-
-
-
-
-/* about page*/
-
+/* =============================================================================
+   ABOUT PAGE
+   ============================================================================= */
 .about-me {
     display: flex;
     justify-content: center;
@@ -370,6 +342,24 @@ ul {
     width: 100%;
 }
 
+.portrait {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 50px;
+    flex: 1;
+    margin-right: 50px;
+    margin-left: 100px;
+}
+
+.about-img {
+    width: 400px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    margin-top: 60px;
+    border: 5px solid var(--color-text);
+}
+
 .about-desc {
     display: flex;
     flex-direction: column;
@@ -382,93 +372,27 @@ ul {
 .about-desc p {
     text-align: left;
     font-family: 'Switzer', sans-serif;
-    color: #333333;
+    color: var(--color-text);
 }
 
 
-.portrait {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-right: 50px;
-    flex: 1;
-    margin-right: 50px;
-    margin-left: 100px;
-}
-
-.about-img {
-    width: 300px;
-    border-radius: 30px;
-    margin-bottom: 20px;
-    margin-top: 60px;
-    border: 5px solid #333333;
-}
-
-.photos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 80px;
-    padding: 80px 0 30px 0;
-}
-
-.bottomimg {
-    border-radius: 30px;
-    border-bottom: 3px solid #333333;
-    margin-top: 50px;
-    width: 100%;
-    margin: 0;
-    box-sizing: border-box;
-    
-}
-
-.photocard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 3px solid #333333;
-    border-radius: 40px;
-    background-color: #EAF0E6;
-    overflow: hidden;
-    box-sizing: border-box;
-    position: relative;
-    top: -20px;
-
-}
-
-.photocard p {
-    font-family: 'Switzer', sans-serif;
-    padding-bottom: 5px;
-}
-
-.photocard:hover {
-    color: #7EA37D;
-    box-shadow: 4px 4px 0 0 #333333;
-    transform: translate(-4px, -4px);
-}
-
-.photocard:hover p{
-    color: #7EA37D;
-}
-
-/*footer stuff*/
-
+/* =============================================================================
+   FOOTER
+   ============================================================================= */
 .bottomContainer {
     font-family: 'Switzer', sans-serif;
 }
 
 .footer {
-    color: #333333;
+    color: var(--color-text);
 }
 
 .footer h3 {
     display: block;
-    align-items: center;
-    justify-content: center;
     text-align: center;
     padding: 50px 0 5px 0;
     font-family: 'Outfit', sans-serif;
-    color: #333333;
+    color: var(--color-text);
 }
 
 .footer .icons {
@@ -477,68 +401,12 @@ ul {
     justify-content: center;
     gap: 25px;
     padding: 0 10px 50px 10px;
-    border-radius: 10px;
 }
 
+.footer .icons a:hover,
 .footer .icons i:hover {
-    color: #7EA37D;
+    color: var(--color-accent);
     transform: translate(-2px, -2px);
-}
-
-
-
-
-
-/* SLIDESHOW STUFF */
-
-.slideshow-container {
-    position: relative;
-    max-width: 620px;
-    justify-content: left;
-    overflow: hidden;
-}
-
-.slide {
-    display: none;
-}
-
-.fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-}
-
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    color: #333333;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
-
-.prev {
-    left: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 3px 0 0;
-}
-
-.prev:hover, .next:hover {
-    background-color: #7EA37D;
 }
 
 
@@ -546,50 +414,15 @@ ul {
    RESPONSIVE
    ============================================================================= */
 
-/* --- Global resets --- */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Override inline width/height on work-grid thumbnails so they scale with the column */
-.work-gif {
-    width: 100% !important;
-    height: auto !important;
-}
-
-/* Responsive iframes (16:9) — fills full content width */
-.video-section {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    margin-bottom: 30px;
-}
-
-.video-section iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-}
-
 /* --- Tablet (≤ 1100px) --- */
 @media (max-width: 1100px) {
-    .videoGrid,
     .videoGrid.active {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
         gap: 40px;
         padding: 30px;
     }
 
-    .fragrantmemory, .sansalc, .ddalpodo, .findyourmuse,
-    .ballroom, .tteokbokki, .boki, .showreel-section, .thesyntaxoflove {
+    .fragrantmemory, .ddalpodo, .boki, .showreel-section, .thesyntaxoflove {
         padding: 50px 80px;
     }
 }
@@ -637,29 +470,26 @@ img {
         padding-top: 30px;
     }
 
-    /* Work grid */
-    .videoGrid,
+    /* Work grid — single column */
     .videoGrid.active {
         grid-template-columns: 1fr;
-        grid-template-rows: auto;
         gap: 30px;
         padding: 20px;
     }
 
-    /* Project page containers */
-    .fragrantmemory, .sansalc, .ddalpodo, .findyourmuse,
-    .ballroom, .tteokbokki, .boki, .showreel-section, .thesyntaxoflove {
+    /* Project pages — reduce side padding */
+    .fragrantmemory, .ddalpodo, .boki, .showreel-section, .thesyntaxoflove {
         padding: 20px;
         margin-top: 80px;
     }
 
-    /* All content images scale down */
+    /* Scale down all inline-sized images */
     img {
         max-width: 100% !important;
         height: auto !important;
     }
 
-    /* Iframes outside .video-section (e.g. fragrantmemory process) */
+    /* Standalone iframes (e.g. fragrantmemory process section) */
     iframe {
         max-width: 100%;
         width: 100%;
@@ -687,14 +517,17 @@ img {
         padding: 20px;
     }
 
-    /* DDALPODO character sketch rows */
-    .ddalgi, .podo {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
+    /* Arduino install — stack vertically */
+    .arduino-install {
+        flex-direction: column;
     }
 
+    .arduino-install img,
+    .arduino-install .arduino-video {
+        width: 100%;
+    }
+
+    /* DDALPODO character sketches — 2 per row */
     .ddalgi img, .podo img {
         width: calc(50% - 10px) !important;
     }
