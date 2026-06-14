@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@300,500&f[]=outfit@600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6adddd4153.js" crossorigin="anonymous"></script>
+    <!-- script.js runs showSection('all') once the page loads, making the work grid visible -->
+    <script src="assets/js/script.js" defer></script>
+    <title>Jellie (Jawon) Han</title>
+</head>
+<body>
+
+    <!-- =====================================================================
+         NAVBAR — copy/paste this exact block into every page to keep it consistent
+         ===================================================================== -->
+    <div class="main-navbar">
+        <div class="logobutton">
+            <a href="index.html"><img src="assets/images/logo top left.webp" alt="logo button" style="width:60px;"></a>
+        </div>
+        <div class="topnav">
+            <a href="about.html" class="about-button">About</a>
+            <!-- "#work-section" links to the work grid below using a smooth scroll -->
+            <a href="#work-section" class="work-button">Work</a>
+        </div>
+    </div>
+    <!-- end NAVBAR -->
+
+
+    <!-- =====================================================================
+         HERO — tagline and link to the showreel
+         ===================================================================== -->
+    <div class="topContainer">
+        <div id="subHeader">
+            <h2><i>Jellie</i> is a <i>motion graphic designer.</i></h2>
+            <a href="ShowReel.html" class="reel-button">Reel</a>
+        </div>
+    </div>
+    <!-- end HERO -->
+
+
+    <!-- =====================================================================
+         WORK GRID — project thumbnails
+         "id=work-section" is the anchor target for the "Work" nav button above.
+         The grid starts hidden (see .videoGrid in style.css) and is shown by
+         script.js calling showSection('all') on page load.
+         ===================================================================== -->
+    <div class="midSection" id="work-section">
+        <div class="videoGrid" id="all">
+
+            <!-- Project card: GABS -->
+            <div class="grid-item">
+                <button class="cardbtn">
+                    <a href="GABSpromo.html">
+                        <!-- "still" shows by default; "gif" appears on hover (see style.css .gif) -->
+                        <img class="still" src="assets/images/gabs.png" alt="gabs" style="width:480px;height:270px;">
+                        <img class="gif" src="assets/images/gabs_2.gif" alt="gabs" style="width:480px;height:270px;">
+                    </a>
+                    <h3>The Great American Baking Show Promotional Package</h3>
+                    <p>Brand Direction, Design & Animation</p>
+                </button>
+            </div>
+
+            <!-- Project card: Fragrant Memory -->
+            <div class="grid-item">
+                <button class="cardbtn">
+                    <a href="fragrantmemory.html">
+                        <img class="still" src="assets/images/fragrantmemory.webp" alt="fragrant memory" style="width:480px;height:270px;">
+                        <img class="gif" src="assets/images/fragrantmemory.gif" alt="fragrant memory" style="width:480px;height:270px;">
+                    </a>
+                    <h3>Fragrant Memory (Senior Project)</h3>
+                    <p>Direction, Design & Animation</p>
+                </button>
+            </div>
+
+            <!-- Project card: Boki -->
+            <div class="grid-item">
+                <button class="cardbtn">
+                    <a href="boki.html">
+                        <img class="still" src="assets/images/boki.png" alt="boki" style="width:480px;height:270px;">
+                        <img class="gif" src="assets/images/boki/boki.gif" alt="boki" style="width:480px;height:270px;">
+                    </a>
+                    <h3>Boki Brand Application</h3>
+                    <p>Technical Direction, Brand Application & Animation</p>
+                </button>
+            </div>
+
+            <!-- Project card: The Syntax of Love -->
+            <div class="grid-item">
+                <button class="cardbtn">
+                    <a href="syntaxoflove.html">
+                        <img class="still" src="assets/images/syntax of love.png" alt="syntax of love" style="width:480px;height:270px;">
+                        <img class="gif" src="assets/images/syntaxoflove/syntaxoflove.gif" alt="syntax of love" style="width:480px;height:270px;">
+                    </a>
+                    <h3>The Syntax of Love</h3>
+                    <p>Design & Animation</p>
+                </button>
+            </div>
+
+            <!-- Project card: DDALPODO -->
+            <div class="grid-item">
+                <button class="cardbtn">
+                    <a href="DDALPODO.html">
+                        <img class="still" src="assets/images/ddalpodo.png" alt="ddalpodo" style="width:480px;height:270px;">
+                        <img class="gif" src="assets/images/ddalpodo/ddalpodo.gif" alt="ddalpodo" style="width:480px;height:270px;">
+                    </a>
+                    <h3>DDALPODO Commercial (3D Animation)</h3>
+                    <p>Design & 3D Animation</p>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <!-- end WORK GRID -->
+
+
+    <!-- =====================================================================
+         FOOTER — copy/paste this exact block into every page
+         ===================================================================== -->
+    <div class="bottomContainer">
+        <div class="footer">
+            <h3>let's chat!</h3>
+            <div class="icons">
+                <a href="https://www.linkedin.com/in/jawon-han/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/jelliemotion/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="mailto:jelliehan@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- end FOOTER -->
+
+</body>
+</html>

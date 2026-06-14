@@ -1,0 +1,847 @@
+/* =============================================================================
+   HOW THIS FILE IS ORGANIZED
+   — Edit the CSS Custom Properties at the very top to restyle the whole site.
+   — Each section is labeled with a big comment so you can jump to it easily.
+   — Responsive (mobile/tablet) rules live at the BOTTOM of the file.
+   ============================================================================= */
+
+
+/* =============================================================================
+   CSS CUSTOM PROPERTIES  (a.k.a. "design tokens" / "variables")
+   Change ONE value here and it updates everywhere on the site.
+   ============================================================================= */
+:root {
+    --color-bg:      #f1f3f5;  /* page background color */
+    --color-text:    #333333;  /* primary text and border color */
+    --color-accent:  #3b6e9e;  /* hover highlight — dark blue */
+
+    --border:        3px solid var(--color-text);  /* reusable border shorthand */
+    --radius-sm:     25px;  /* small pill border-radius (buttons) */
+    --radius-lg:     40px;  /* large border-radius (cards, images) */
+
+    --nav-height:    80px;  /* approximate height of the fixed navbar */
+}
+
+
+/* =============================================================================
+   GLOBAL RESETS
+   These rules apply to every element on every page.
+   ============================================================================= */
+*, *::before, *::after {
+    /* Makes padding/border count INSIDE an element's width — much easier to reason about */
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg);
+    scroll-behavior: smooth;  /* smooth scrolling when clicking anchor links */
+}
+
+a {
+    color: inherit;           /* links inherit color from their parent element */
+    text-decoration: none;    /* remove default underline from all links */
+}
+
+img {
+    max-width: 100%;   /* images never overflow their container */
+    height: auto;      /* maintain aspect ratio when width changes */
+    display: block;    /* removes the small gap below inline images */
+}
+
+
+/* =============================================================================
+   TYPOGRAPHY
+   Font sizes and families for headings and body text.
+   ============================================================================= */
+h1 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--color-text);
+    font-size: 48px;
+}
+
+h2 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--color-text);
+    font-size: 28px;
+}
+
+p {
+    font-family: 'Switzer', sans-serif;
+    color: var(--color-text);
+}
+
+ul {
+    font-family: 'Switzer', sans-serif;
+    color: var(--color-text);
+}
+
+/* Sub-labels inside project process sections (e.g. "Mood Board", "Storyboard") */
+.process-subheader {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    color: var(--color-text);
+    text-align: left;
+    margin: 30px 0 10px;
+}
+
+
+/* =============================================================================
+   NAVIGATION
+   The navbar is fixed to the top of the screen — it stays visible as you scroll.
+   ============================================================================= */
+.main-navbar {
+    overflow: hidden;          /* contains the floated logo + nav links */
+    padding: 0 30px 0 0;
+    position: fixed;           /* sticks to the top of the browser window */
+    top: 0;
+    width: 100%;
+    z-index: 1000;             /* appears above all other content */
+    background-color: var(--color-bg);
+    border-bottom: var(--border);
+}
+
+.topnav {
+    overflow: hidden;
+    padding: 30px 30px 0 0;   /* pushes nav links down to vertically center them */
+}
+
+/* Styles for <a> tags directly inside .topnav */
+.topnav a {
+    display: block;
+    color: var(--color-text);
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Logo in the top-left corner of the navbar */
+.logobutton {
+    display: inline;
+    float: left;
+    background-color: var(--color-bg);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 35px 20px 20px 50px;
+    transition: transform 0.5s ease;
+}
+
+.logobutton:hover {
+    transform: rotate(-10deg);  /* fun little tilt on hover */
+}
+
+/* -----------------------------------------------------------------------
+   PILL BUTTONS — shared styles for "About", "Work", and "Reel"/"Resume"
+   All three buttons share these same base styles. Layout-specific rules
+   (float, margin, display) are added separately below.
+   ----------------------------------------------------------------------- */
+.about-button, .work-button, .reel-button {
+    color: var(--color-text);
+    text-decoration: none;
+    text-align: center;
+    background-color: var(--color-bg);
+    padding: 14px 20px;
+    border: var(--border);
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: var(--radius-sm);
+    font-family: 'Outfit', sans-serif;
+    /* smooth animation when hovering */
+    transition: color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+/* "About" and "Work" buttons float to the right side of the navbar */
+.about-button, .work-button {
+    display: block;
+    float: right;
+    margin: 0 10px;
+}
+
+/* Hover effect for all three pill buttons */
+.about-button:hover, .work-button:hover, .reel-button:hover {
+    color: var(--color-accent);
+    box-shadow: 2px 2px 0 0 var(--color-text);
+    transform: translate(-2px, -2px);  /* slight upward-left shift on hover */
+}
+
+/* "Reel" / "Resume" button — centered, not floated (used in hero and about page) */
+.reel-button {
+    float: none;
+    display: block;
+    margin: 20px auto;
+    width: fit-content;
+}
+
+
+/* =============================================================================
+   HOME PAGE — HERO SECTION
+   The large intro area with the tagline and Reel button.
+   ============================================================================= */
+.topContainer {
+    text-align: center;
+    margin-top: 100px;  /* pushes content below the fixed navbar */
+    margin-bottom: 0px;
+}
+
+.topContainer img {
+    padding-top: 25px;
+    margin: 0 auto;    /* center the image horizontally */
+}
+
+.topContainer h2 {
+    padding-top: 30px;
+    font-size: 33px;
+}
+
+#subHeader {
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+
+/* =============================================================================
+   HOME PAGE — WORK GRID
+   The 2-column grid of project thumbnails.
+   ============================================================================= */
+
+/* The grid is hidden by default; script.js adds the "active" class to show it */
+.videoGrid {
+    display: none;
+}
+
+.videoGrid.active {
+    display: grid;
+    grid-template-columns: 480px 480px;  /* two equal columns */
+    grid-template-rows: auto;
+    justify-content: center;
+    gap: 20px;
+    background-color: var(--color-bg);
+    padding: 40px;
+}
+
+.videoGrid h3 {
+    margin: 10px 0 0;
+    font-size: 18px;
+    font-family: 'Outfit', sans-serif;
+    color: var(--color-text);
+}
+
+.videoGrid p {
+    font-family: 'Switzer', sans-serif;
+    color: var(--color-text);
+    margin: 5px 0 0;
+}
+
+.videoGrid > div {
+    text-align: left;
+    font-size: 30px;
+}
+
+/* Each card button wrapping a project thumbnail, title, and subtitle */
+.cardbtn {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    background: transparent;
+    overflow: visible;
+    padding: 0 0 20px 0;
+    box-sizing: border-box;
+    position: relative;
+    top: -20px;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Turn the title blue when hovering a project card */
+.cardbtn:hover h3 {
+    color: var(--color-accent);
+}
+
+/* Wrapper for each thumbnail — handles the still/GIF swap */
+.grid-item {
+    position: relative;
+    overflow: visible;
+}
+
+.grid-item img {
+    width: 100%;
+    display: block;
+}
+
+/* The GIF is hidden by default, layered on top of the still image */
+.gif {
+    position: absolute;
+    inset: 0;       /* shorthand for top/right/bottom/left: 0 */
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Show the GIF when hovering over the card */
+.grid-item:hover .gif {
+    opacity: 1;
+}
+
+
+/* =============================================================================
+   PROJECT PAGES — SHARED LAYOUT
+   All project pages (GABS, Fragrant Memory, Boki, etc.) use these styles.
+   ============================================================================= */
+
+/* Outer padding for all project page content wrappers */
+.fragrantmemory, .ddalpodo, .boki, .showreel-section, .thesyntaxoflove, .gabspromo {
+    padding: 50px 200px;
+    margin-top: 100px;  /* space below the fixed navbar */
+}
+
+/* Full-width 16:9 video container — used for the main project video */
+.video-section {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;  /* automatically maintains a widescreen ratio */
+    margin-bottom: 30px;
+}
+
+/* The iframe fills its parent container completely */
+.video-section iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Side-by-side video rows (used for cut-downs with vertical + horizontal videos) */
+.video-row, .video-row-b {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;  /* horizontally center the videos in their row */
+    padding-bottom: 20px;
+}
+
+/* Generic video container — height drives the size on desktop */
+.video {
+    height: 450px;
+    position: relative;
+}
+
+/* The iframe fills its parent .video container */
+.video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Vertical video (9:16 portrait, e.g. Instagram Reels) */
+.vertical {
+    aspect-ratio: 9 / 16;
+}
+
+/* Horizontal video (16:9 landscape) */
+.horizontal {
+    aspect-ratio: 16 / 9;
+}
+
+/* Row of small social media preview videos (vertical + square) */
+.social-promo {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Social promo videos load from their .video parent height */
+.social-promo .video {
+    height: 218px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.social-promo iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 9:16 vertical — used in social-promo */
+.social-promo .vertical {
+    aspect-ratio: 9 / 16;
+}
+
+/* 1:1 square — used in social-promo */
+.social-promo .square {
+    aspect-ratio: 1 / 1;
+}
+
+/* Row of social post image thumbnails */
+.social-posts {
+    display: flex;
+    gap: 16px;
+    justify-content: center;  /* center images in their row */
+    padding-bottom: 16px;
+}
+
+/* Side-by-side bento box images */
+.bento-box {
+    display: flex;
+    gap: 16px;
+    justify-content: center;  /* center images in their row */
+    padding-bottom: 16px;
+}
+
+/* Vertical column of storyboard images */
+.storyboards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* center images horizontally in a column layout */
+    gap: 16px;
+}
+
+/* Row of style frame images */
+.styleframes {
+    display: flex;
+    gap: 16px;
+    justify-content: center;  /* center images in their row */
+    padding-bottom: 16px;
+}
+
+/* Visual development images (color palette, typography) — stacked vertically */
+.visual-dev {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* center images horizontally in a column layout */
+    gap: 16px;
+    padding-bottom: 16px;
+}
+
+/* Date / Skills info block below the main project video */
+.meta-info {
+    margin: 16px 0 30px;
+}
+
+/* Center standalone process images (Mood Boards, Storyboards, Styleframes, etc.)
+   inside any project process section. margin: auto centers a block-level element. */
+.fm-process img,
+.bk-process img,
+.sol-process img,
+.dp-process img,
+.gabs-process img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* DDALPODO character sketch rows (Strawberry / Grape) */
+.ddalgi, .podo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* center the character sketches in their row */
+    gap: 20px;
+    margin: 10px 0;
+}
+
+/* Arduino photo + installation video shown side by side */
+.arduino-install {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;  /* center the image + video pair horizontally */
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.arduino-install img {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 0;
+}
+
+.arduino-install .arduino-video {
+    position: relative;
+    flex: 1;
+    aspect-ratio: 16 / 9;
+}
+
+.arduino-install .arduino-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* =============================================================================
+   SHOWREEL PAGE
+   Tracklist styles for the ShowReel 2025 page.
+   ============================================================================= */
+.tracklist {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tracklist p {
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Track number (e.g. "01") */
+.track-num {
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+/* Track title (e.g. "DDALPODO") — shown in uppercase */
+.track-title {
+    text-transform: uppercase;
+    color: var(--color-accent);
+    font-weight: 400;
+}
+
+
+/* =============================================================================
+   ABOUT PAGE
+   ============================================================================= */
+.about-me {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;  /* space below fixed navbar */
+    padding: 50px;
+}
+
+/* Flex row containing portrait image + bio text */
+.about-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Left column — the portrait photo */
+.portrait {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 50px;
+    flex: 1;
+    margin-right: 50px;
+    margin-left: 100px;
+}
+
+/* The actual portrait photo */
+.about-img {
+    width: 400px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    margin-top: 60px;
+    border: 5px solid var(--color-text);
+}
+
+/* Right column — the bio text */
+.about-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    flex: 1;
+    margin-right: 100px;
+}
+
+
+/* =============================================================================
+   FOOTER
+   Appears at the bottom of every page.
+   ============================================================================= */
+.bottomContainer {
+    font-family: 'Switzer', sans-serif;
+}
+
+.footer {
+    color: var(--color-text);
+}
+
+.footer h3 {
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+    color: var(--color-text);
+}
+
+/* Row of social media icon links */
+.footer .icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    padding: 0 10px 50px 10px;
+}
+
+/* Turn icon blue on hover */
+.footer .icons a:hover,
+.footer .icons i:hover {
+    color: var(--color-accent);
+    transform: translate(-2px, -2px);
+}
+
+
+/* =============================================================================
+   RESPONSIVE — TABLET  (screen width 1100px and below)
+   Applied on iPads, small laptops, and similar devices.
+   ============================================================================= */
+@media (max-width: 1100px) {
+    /* Switch work grid to fluid columns instead of fixed 480px */
+    .videoGrid.active {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        padding: 30px;
+    }
+
+    /* Reduce side padding on project pages */
+    .fragrantmemory, .ddalpodo, .boki, .showreel-section, .thesyntaxoflove, .gabspromo {
+        padding: 50px 60px;
+    }
+
+    /* Prevent any inline-width image from overflowing on tablet */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Pull the portrait closer so it doesn't push off-screen */
+    .portrait {
+        margin-left: 20px;
+        padding-right: 20px;
+        margin-right: 20px;
+    }
+
+    .about-desc {
+        margin-right: 20px;
+    }
+
+    /* Allow social/gallery rows to wrap onto multiple lines */
+    .social-promo,
+    .social-posts,
+    .bento-box,
+    .styleframes {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Let cut-down video rows wrap on tablet */
+    .video-row, .video-row-b {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+
+/* =============================================================================
+   RESPONSIVE — MEDIUM  (screen width 900px and below)
+   Applied when side-by-side videos would become too narrow.
+   ============================================================================= */
+@media (max-width: 900px) {
+    /* Stack cut-down video rows vertically */
+    .video-row, .video-row-b {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Let the videos grow to full width, with a sensible max */
+    .vertical,
+    .horizontal {
+        width: 100%;
+        max-width: 533px;
+    }
+}
+
+
+/* =============================================================================
+   RESPONSIVE — MOBILE  (screen width 768px and below)
+   Applied on most phones and small tablets.
+   ============================================================================= */
+@media (max-width: 768px) {
+    /* --- Navbar --- */
+    .main-navbar {
+        padding: 0 8px;
+    }
+
+    .logobutton {
+        padding: 12px 10px 8px 15px;
+    }
+
+    .topnav {
+        padding: 12px 4px 0 0;
+    }
+
+    .about-button, .work-button {
+        padding: 8px 14px;
+        font-size: 15px;
+        margin: 0 4px;
+    }
+
+    /* --- Hero section --- */
+    .topContainer {
+        margin-top: 90px;
+        padding: 0 20px;
+    }
+
+    .topContainer img {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .topContainer h2 {
+        font-size: 22px;
+    }
+
+    #subHeader {
+        padding-bottom: 50px;
+        padding-top: 30px;
+    }
+
+    /* --- Work grid — single column on mobile --- */
+    .videoGrid.active {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 20px;
+    }
+
+    /* --- Project pages — slim down side padding --- */
+    .fragrantmemory, .ddalpodo, .boki, .showreel-section, .thesyntaxoflove, .gabspromo {
+        padding: 20px;
+        margin-top: 80px;
+    }
+
+    /* --- Force ALL images to fit their container --- */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* --- iframes (standalone, not inside .video-section) --- */
+    iframe {
+        max-width: 100%;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        height: auto;
+    }
+
+    /* --- Video rows — stack vertically and remove fixed height --- */
+    .video-row, .video-row-b {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Remove the fixed 450px height — let aspect-ratio drive the size from width */
+    .video {
+        height: auto;
+    }
+
+    .video.vertical, .video.horizontal {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    /* --- Social promo videos — stack and cap width --- */
+    .social-promo {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .social-promo .video {
+        height: auto;
+        width: 100%;
+        max-width: 260px;
+    }
+
+    /* --- Social posts, bento boxes, styleframes — wrap onto new rows --- */
+    .social-posts, .bento-box, .styleframes {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* --- About page — stack portrait above text --- */
+    .about-content {
+        flex-direction: column;
+    }
+
+    .portrait {
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .about-img {
+        width: 100%;
+        max-width: 300px;
+        margin-top: 20px;
+    }
+
+    .about-desc {
+        margin-right: 0;
+        padding: 0 10px;
+    }
+
+    .about-me {
+        padding: 20px;
+    }
+
+    /* --- Arduino installation — stack image above video --- */
+    .arduino-install {
+        flex-direction: column;
+    }
+
+    .arduino-install img,
+    .arduino-install .arduino-video {
+        width: 100%;
+    }
+
+    /* --- DDALPODO character sketches — 2 per row --- */
+    .ddalgi img, .podo img {
+        width: calc(50% - 10px) !important;
+    }
+
+    /* --- Scale down headings slightly --- */
+    h1 {
+        font-size: 32px;
+    }
+}
+
+
+/* =============================================================================
+   RESPONSIVE — SMALL MOBILE  (screen width 480px and below)
+   Applied on small phones (iPhone SE, etc.).
+   ============================================================================= */
+@media (max-width: 480px) {
+    .about-button, .work-button {
+        padding: 6px 10px;
+        font-size: 13px;
+        border-width: 2px;
+        border-radius: 20px;
+    }
+
+    .topContainer h2 {
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .footer h3 {
+        padding: 30px 0 5px;
+    }
+}
