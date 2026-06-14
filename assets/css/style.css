@@ -75,13 +75,37 @@ ul {
     color: var(--color-text);
 }
 
-/* Sub-labels inside project process sections (e.g. "Mood Board", "Storyboard") */
+/* Sub-labels inside project process sections (e.g. "Mood Board", "Storyboard")
+   Left-aligned so they share the same left edge as the content beneath them. */
 .process-subheader {
     font-family: 'Outfit', sans-serif;
     font-size: 22px;
     color: var(--color-text);
     text-align: left;
     margin: 30px 0 10px;
+}
+
+/* Center the project title block at the top of every project page
+   (the h1 headline stays centered as a design choice) */
+.title-date {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Sub-title under the main title (e.g. "Montage") — left-aligned
+   so it lines up with the video/content below it. */
+.title-date h2 {
+    text-align: left;
+}
+
+/* Section headings (Overview, Promotional Package, Process) — left-aligned
+   so they share the same left edge as the content beneath them. */
+.fm-process h2,
+.bk-process h2,
+.sol-process h2,
+.dp-process h2,
+.gabs-process h2 {
+    text-align: left;
 }
 
 
@@ -313,18 +337,22 @@ ul {
     height: 100%;
 }
 
-/* Side-by-side video rows (used for cut-downs with vertical + horizontal videos) */
+/* Side-by-side video rows (used for cut-downs with vertical + horizontal videos).
+   justify-content: flex-start so the left edge of the first video always
+   aligns with the left edge of the subtitle above it. */
 .video-row, .video-row-b {
     display: flex;
     gap: 24px;
     align-items: center;
-    justify-content: center;  /* horizontally center the videos in their row */
+    justify-content: flex-start;
     padding-bottom: 20px;
 }
 
-/* Generic video container — height drives the size on desktop */
+/* Generic video container — height drives the size on desktop.
+   clamp(min, preferred, max): scales smoothly between 200px and 450px
+   based on the viewport width (28vw), so videos shrink on smaller windows. */
 .video {
-    height: 450px;
+    height: clamp(200px, 28vw, 450px);
     position: relative;
 }
 
@@ -346,17 +374,20 @@ ul {
     aspect-ratio: 16 / 9;
 }
 
-/* Row of small social media preview videos (vertical + square) */
+/* Row of small social media preview videos (vertical + square).
+   flex-wrap: wrap so videos reflow naturally on narrower windows.
+   justify-content: flex-start so the left edge aligns with the subtitle above. */
 .social-promo {
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
-/* Social promo videos load from their .video parent height */
+/* Social promo videos — height scales with window width */
 .social-promo .video {
-    height: 218px;
+    height: clamp(140px, 18vw, 218px);
     position: relative;
     flex-shrink: 0;
 }
@@ -378,45 +409,60 @@ ul {
     aspect-ratio: 1 / 1;
 }
 
-/* Row of social post image thumbnails */
+/* Social post image grid — 4 equal columns.
+   gap is the ONLY spacing used here, so horizontal and vertical
+   distances between photos are always identical. */
 .social-posts {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-    justify-content: center;  /* center images in their row */
-    padding-bottom: 16px;
+    margin-bottom: 16px;  /* space between consecutive .social-posts blocks */
 }
 
-/* Side-by-side bento box images */
+/* Bento box image grid — always 2 equal columns.
+   gap is the ONLY spacing used here. */
 .bento-box {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 16px;
-    justify-content: center;  /* center images in their row */
-    padding-bottom: 16px;
+    margin-bottom: 16px;  /* space between consecutive .bento-box blocks */
 }
 
-/* Vertical column of storyboard images */
+/* Vertical column of storyboard images — left-aligned to match subtitle */
 .storyboards {
     display: flex;
     flex-direction: column;
-    align-items: center;  /* center images horizontally in a column layout */
+    align-items: flex-start;
     gap: 16px;
 }
 
-/* Row of style frame images */
+/* Style frame image grid — 3 equal columns.
+   gap is the ONLY spacing used here, so horizontal distance (between columns)
+   and vertical distance (between rows) are always identical. */
 .styleframes {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-    justify-content: center;  /* center images in their row */
-    padding-bottom: 16px;
+    margin-bottom: 16px;  /* space between consecutive .styleframes blocks */
 }
 
-/* Visual development images (color palette, typography) — stacked vertically */
+/* Visual development images — stacked vertically, left-aligned to match subtitle */
 .visual-dev {
     display: flex;
     flex-direction: column;
-    align-items: center;  /* center images horizontally in a column layout */
+    align-items: flex-start;
     gap: 16px;
     padding-bottom: 16px;
+}
+
+/* Make every image fill its grid cell so all items in a row are the same width.
+   Without this, images with inline width="..." would ignore the grid columns. */
+.social-posts img,
+.bento-box img,
+.styleframes img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Date / Skills info block below the main project video */
@@ -424,32 +470,32 @@ ul {
     margin: 16px 0 30px;
 }
 
-/* Center standalone process images (Mood Boards, Storyboards, Styleframes, etc.)
-   inside any project process section. margin: auto centers a block-level element. */
+/* Standalone process images (Mood Boards, Storyboards, etc.) — left-aligned
+   so they share the same left edge as the subtitle above them. */
 .fm-process img,
 .bk-process img,
 .sol-process img,
 .dp-process img,
 .gabs-process img {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
 }
 
-/* DDALPODO character sketch rows (Strawberry / Grape) */
+/* DDALPODO character sketch rows (Strawberry / Grape) — left-aligned to match subtitle */
 .ddalgi, .podo {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;  /* center the character sketches in their row */
+    justify-content: flex-start;
     gap: 20px;
     margin: 10px 0;
 }
 
-/* Arduino photo + installation video shown side by side */
+/* Arduino photo + installation video shown side by side — left-aligned to match subtitle */
 .arduino-install {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: center;  /* center the image + video pair horizontally */
+    justify-content: flex-start;
     gap: 30px;
     margin-top: 10px;
 }
@@ -629,39 +675,35 @@ ul {
         margin-right: 20px;
     }
 
-    /* Allow social/gallery rows to wrap onto multiple lines */
-    .social-promo,
-    .social-posts,
-    .bento-box,
+    /* Social promo videos — wrapping already set in base rule */
+    .social-promo {
+        justify-content: flex-start;
+    }
+
+    /* Gallery grids — switch to 2 columns on tablet */
+    .social-posts {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .styleframes {
-        flex-wrap: wrap;
-        justify-content: center;
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    /* Let cut-down video rows wrap on tablet */
-    .video-row, .video-row-b {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
+    /* bento-box stays at 2 columns — already correct */
 
-
-/* =============================================================================
-   RESPONSIVE — MEDIUM  (screen width 900px and below)
-   Applied when side-by-side videos would become too narrow.
-   ============================================================================= */
-@media (max-width: 900px) {
-    /* Stack cut-down video rows vertically */
+    /* Stack cut-down video rows at tablet width so they never overflow.
+       align-items: flex-start so each stacked video starts from the left. */
     .video-row, .video-row-b {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 
     /* Let the videos grow to full width, with a sensible max */
-    .vertical,
-    .horizontal {
+    .video.vertical,
+    .video.horizontal {
+        height: auto;
         width: 100%;
-        max-width: 533px;
+        max-width: 560px;
     }
 }
 
@@ -739,38 +781,34 @@ ul {
         height: auto;
     }
 
-    /* --- Video rows — stack vertically and remove fixed height --- */
-    .video-row, .video-row-b {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /* Remove the fixed 450px height — let aspect-ratio drive the size from width */
-    .video {
-        height: auto;
-    }
-
+    /* --- Video rows already stack from the 1100px breakpoint.
+           On mobile, clamp further and tighten the max width. --- */
     .video.vertical, .video.horizontal {
-        width: 100%;
-        max-width: 400px;
+        max-width: 340px;
     }
 
-    /* --- Social promo videos — stack and cap width --- */
+    /* --- Social promo videos — left-aligned on mobile too --- */
     .social-promo {
-        flex-wrap: wrap;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .social-promo .video {
         height: auto;
         width: 100%;
-        max-width: 260px;
+        max-width: 220px;
     }
 
-    /* --- Social posts, bento boxes, styleframes — wrap onto new rows --- */
-    .social-posts, .bento-box, .styleframes {
-        flex-wrap: wrap;
-        justify-content: center;
+    /* --- Gallery grids — collapse to a single column on mobile --- */
+    .social-posts {
+        grid-template-columns: repeat(2, 1fr);  /* 2-up looks good even on phones */
+    }
+
+    .bento-box {
+        grid-template-columns: 1fr;             /* stack bento images vertically */
+    }
+
+    .styleframes {
+        grid-template-columns: 1fr;             /* stack styleframes vertically */
     }
 
     /* --- About page — stack portrait above text --- */
